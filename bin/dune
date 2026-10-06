@@ -1,0 +1,4 @@
+(executable
+ (public_name Fractran)
+ (name main)
+ (libraries Fractran))
