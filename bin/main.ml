@@ -14,10 +14,11 @@ let list_of_primes_60 = [
   233; 239; 241; 251; 257; 263; 269; 271; 277; 281
 ]
 
-let format (n : inp) = List.fold_left2 
+let format (n : inp) = let k = List.fold_left2 
 (fun acc exp base -> if exp!=0 then (acc ^ (Int.to_string base) ^ "^" ^ (Int.to_string exp) ^ " " ) else acc)
 "" 
 n list_of_primes_60
+in if String.equal k "" then "1" else k
 
 
 (* Il existe probablement une facon plus optimisée pour build la liste plutot que de modifier a chaque fois, mais comme on le fait relativement peu de fois, comparé
@@ -95,6 +96,7 @@ let rec find_divisor (nombre : inp) (prog : program) = match prog with
 let prod (nombre : inp) (prog_frac : fraction) =
   let den = denominator prog_frac in 
   let num = numerator prog_frac in 
+   (* let ()  = print_endline (format nombre ^" x " ^ format num ^ "/" ^format den)  in*)
   List.map2 (fun x y -> x - y) nombre den |> List.map2 (fun x y -> x + y) num
 
 
@@ -135,4 +137,16 @@ let () = print_endline (Int.to_string (List.length (read_lines "program.fr")))
 
 let () = "program.fr" |> read_lines |> parse_program |> run_pair |> format |>  print_endline
 *)
-let () = if Array.length Sys.argv!=2 then failwith "Erreur arguments" else Sys.argv.(1) |> read_lines |> parse_program |> run_pair |> format |>  print_endline
+
+(*Vu pendant le cours de Reprod en faisant l'exo, y'a mieux pour Args, mais c'est un interpréteur fait en une aprem, y'a pas mort d'homme*)
+let () = begin match Array.length Sys.argv  with 
+  | 2 -> Sys.argv.(1) |> read_lines
+  | 3 -> begin
+    let i = read_lines Sys.argv.(1) in
+    let p = read_lines Sys.argv.(2) in i @ p  end
+  | _ -> failwith "Erreur nombre d'arguments"
+end
+ |> parse_program |> run_pair |> format |>  print_endline
+
+(*if Array.length Sys.argv!=2 then failwith "Erreur arguments" else Sys.argv.(1) |> read_lines |> parse_program |> run_pair |> format |>  print_endline
+*)
