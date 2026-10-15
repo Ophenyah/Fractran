@@ -1,4 +1,4 @@
-# Analyse du programme 
+# Analyse du programme (Synthaxe)
 
 Son principe est très proche du mien, il est donc recommandé de lire EXPLICATION.md avant, car je ne vais pas me répéter, juste comparer. 
 
@@ -17,10 +17,28 @@ Les deux façon de faire sont équivalentes dans ces conditions, et il est proba
 Le fonctionnement des boucles sont analogues, il rajoute juste à la fin `5/7`, pour transférer du registre temporaire au registre final.
 
 
-# Analyse du résultat
+
+Il n'est pas trivial de différentier comparer deux codes Fractran, en effet, il y a bien souvent une équivalence par  𝛼-renommage. Ainsi, en renommant nos registres comme le LLM, on constate que les seules differences modulo l'ordre sont sur le distingo boucle/changement état, et l'utilisation d'un registre temporaire, donc 5 fractions vraiment différentes.
+
+L'ordre des fractions est aussi légèrement different. Tandis que j'ordonne et groupe par position dans l'algorithme, il groupe par rapport a la branche dans laquelle on est.
+
+Par exemple, mon code est sous forme 
+C2 C3 D2 D3 E2 E3 A B2 B3
+
+tandis que le llm a généré l'odre
+C2 D2 E2 D3 D3 E3 A B2 B3
+
+
+
+# Analyse du résultat (Sémantique)
 
 Tout les tests passent. De plus, après analyse humaine, les programmes sont équivalent sous sémantique dénotationnelle, pour une meme entrée, ils auront la même sortie.
 
+Ici, il est facile de vérifier que les programmes donnent la meme sortie. En effet, de par la structure de l'algorithme, suffit de vérifier qu'une "itération" donne l'égalité pgcd(x,y) = pgcd(|x-y|,min(x,y)).
+
+En ayant en entrée 2^x*3^y, on peut dérouler l'algorithme à la main (ou sur un graphe pour mieux voir), et constater que l'on retrouve bien l'égalité, jusqu'à arriver au résultat final.
+
+Un programme plus long, contenant plus de différences, serait beaucoup plus dur a controller.
 
 # Conclusion sur l'efficacité du LLM
 
