@@ -23,10 +23,10 @@ Autrement dit, dans un registre, on a bien |x-y|, et dans l'autre min(x,y).
 
 ## B) Marqueur d'état, boucle pour recommencer
 
-Pour recommencer, il faut remettre la valeur dans Reg5 dans le registre qui est libre.
+Pour recommencer, il faut remettre la valeur de Reg5 dans le registre qui est libre.
 
 Si Reg2 > 0, on multiple par  `23*3/2*5`, sinon, `31*2/3*5`.
-On consomme 1 dans le registre qui existe encore pour rentrer dans le bon état (23 ou 31, le chiffre des dizaines me servant mentalement pour m'y retrouver) et ainsi pouvoir boucler correctement pour décaller tout le contenu de Reg5 dans le registre libre.
+On consomme 1 dans le registre qui existe encore pour rentrer dans le bon état (23 ou 31, le chiffre des dizaines me servant mentalement pour m'y retrouver) et ainsi pouvoir boucler correctement pour décaler tout le contenu de Reg5 dans le registre libre.
 
 Il ne faudra pas oublier cependant, de restituer l'élément consommé, à la fin du processus de copie.
 

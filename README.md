@@ -1,4 +1,4 @@
-##DM de DSL : Fractran
+## DM de DSL : Fractran
 
 https://esolangs.org/wiki/Fractran
 
