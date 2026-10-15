@@ -1,11 +1,14 @@
-2^5*3^14
-#
+#C) Marqueur de boucle pour 5^min -> 2^min/3^min
 37/31
 29/23
+#D) L'actuel boucle pour 5^min -> 2^min/3^min
 2*31/37*5
 3*23/29*5
+#E) Sortie de la boucle susmentionnée
 3/37
 2/29
+#A) 2^x3^y -> (2/3)^min(x,y) 5^|x-y|
 5/2*3
+#B) Initialisation de la boucle, on divise par 2 (resp 3) pour savoir dans quelle branche aller,  On résistuera à D)
 23*3/2*5
 31*2/3*5
